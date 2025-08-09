@@ -1,0 +1,51 @@
+[property]
+gpu-id=0
+net-scale-factor=0.0039215697906911373
+
+# Rutas absolutas al modelo
+model-file=/opt/nvidia/deepstream/deepstream-6.0/samples/models/Primary_Detector/resnet10.caffemodel
+proto-file=/opt/nvidia/deepstream/deepstream-6.0/samples/models/Primary_Detector/resnet10.prototxt
+model-engine-file=/opt/nvidia/deepstream/deepstream-6.0/samples/models/Primary_Detector/resnet10.caffemodel_b1_gpu0_int8.engine
+labelfile-path=/opt/nvidia/deepstream/deepstream-6.0/samples/models/Primary_Detector/labels.txt
+int8-calib-file=/opt/nvidia/deepstream/deepstream-6.0/samples/models/Primary_Detector/cal_trt.bin
+
+# Un solo stream
+batch-size=1
+
+process-mode=1
+model-color-format=0
+## 0=FP32, 1=INT8, 2=FP16 mode
+network-mode=1
+num-detected-classes=4
+interval=0
+gie-unique-id=1
+output-blob-names=output_cov/Sigmoid,output_bbox/BiasAdd
+force-implicit-batch-dim=1
+
+## Clustering de bounding boxes
+cluster-mode=2   # NMS
+
+# Configuración general
+[class-attrs-all]
+topk=20
+nms-iou-threshold=0.5
+pre-cluster-threshold=0.2
+
+# Clase 0: car (habilitada)
+[class-attrs-0]
+topk=50
+nms-iou-threshold=0.1
+pre-cluster-threshold=0.05
+min-boxes=2 
+
+# Clase 1: bicycle (desactivada)
+[class-attrs-1]
+topk=0
+
+# Clase 2: person (desactivada)
+[class-attrs-2]
+topk=0
+
+# Clase 3: roadsign (desactivada)
+[class-attrs-3]
+topk=0
