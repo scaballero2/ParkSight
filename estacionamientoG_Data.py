@@ -41,9 +41,15 @@ broker_ip = "10.244.140.146"  # IP DE LA PI
 topic = "deepstream/car_count"
 
 client = mqtt.Client()
-client.connect(broker_ip, 1883)
 
-print("Mensaje enviado!")
+try:
+    client.connect(broker_ip, 1883)
+    print("Conectado al broker MQTT")
+    connected = True
+except Exception as e:
+    print(f"Error al conectar al broker MQTT: {e}")
+    connected = False
+
 
 fps_streams={}
 
@@ -98,7 +104,8 @@ def tiler_src_pad_buffer_probe(pad,info,u_data):
                     user_meta_data = pyds.NvDsAnalyticsObjInfo.cast(user_meta.user_meta_data)
                     if user_meta_data.lcStatus:
                         for line_name in user_meta_data.lcStatus:
-                            client.publish(topic, line_name)
+                            if connected:
+                                client.publish(topic, line_name)
                             line_count[line_name] += 1
                             total_space = line_count["Entry"] - line_count["Exit"]
                             print(f"Hay {total_space} espacios ocupados")
@@ -396,7 +403,8 @@ def main(args):
     # cleanup
     print("Exiting app\n")
     pipeline.set_state(Gst.State.NULL)
-    client.disconnect()
+    if connected:
+        client.disconnect()
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
