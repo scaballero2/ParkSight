@@ -1,12 +1,12 @@
 [property]
 gpu-id=0
 net-scale-factor=0.0039215697906911373
-model-engine-file=/opt/nvidia/deepstream/deepstream-6.0/samples/models/trafficcamnet_pruned_onnx_v1.0.4/resnet18_trafficcamnet_pruned.engine
+model-engine-file=/opt/nvidia/deepstream/deepstream-6.0/samples/models/trafficcamnet_pruned_onnx_v1.0.4/resnet18_trafficcamnet_pruned_fp16.engine
 labelfile-path=/opt/nvidia/deepstream/deepstream-6.0/samples/models/trafficcamnet_pruned_onnx_v1.0.4/labels.txt
 batch-size=1
 process-mode=1
 model-color-format=0
-network-mode=2
+network-mode=1
 num-detected-classes=4
 interval=0
 gie-unique-id=1
