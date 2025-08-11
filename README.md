@@ -224,7 +224,7 @@ sudo docker run -it \
   nvcr.io/nvidia/deepstream-l4t:6.0.1-triton
 ```
 
-Ahora es necesario instalar las librerías necesarias para ejecutar/desarrollar código de deepstream en python. Para esto se hará uso de la siguiente [Repo](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps). Para deepstream 6.0.1/Jetpack 4.6.x:
+Ahora, es necesario instalar las librerías necesarias para ejecutar/desarrollar código de deepstream en python. Para esto se hará uso de la siguiente [Repo](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps). Para deepstream 6.0.1/Jetpack 4.6.x:
 
 Accedemos a la carpeta madre de deepstream 6.0: 
 
@@ -248,6 +248,11 @@ Se instala el binding
 
 ```bash
 pip3 install /tmp/pyds-1.1.1-py3-none-linux_aarch64.whl
+```
+
+Se instala `paho-mqtt`
+```
+pip3 install paho-mqtt
 ```
 
 Finalmente se clona el repositorio con ejemplos compatibles:
@@ -283,4 +288,45 @@ Y se clona el siguiente [repo](https://github.com/scaballero2/ParkSight/tree/mai
 
 ```bash
 git clone https://github.com/scaballero2/ParkSight.git
+```
+
+Finalmente:
+
+```bash
+cd ParkSight
+```
+
+`estacionamientoG.py`: Se realiza la inferencia sobre un video o stream RTSP. Este se ejecuta con: 
+```bash
+python3 estacionamientoG.py file:///ruta/completa/al/archivo.mp4
+```
+O:
+```bash
+python3 estacionamientoG.py rtsp://usuario:contraseña@dirección_ip:puerto/ruta
+```
+
+`estacionamientoG_Data.py`: Se realiza la inferencia sobre un video o stream RTSP, al igual que el envío de datos a una Raspberry Pi. Este se ejecuta con: 
+```bash
+python3 estacionamientoG_Data.py file:///ruta/completa/al/archivo.mp4
+```
+O:
+```bash
+python3 estacionamientoG_Data.py rtsp://usuario:contraseña@dirección_ip:puerto/ruta
+```
+
+`estacionamientoG_cam.py`: Se realiza la inferencia sobre un stream de una cámara USB. Este se ejecuta con: 
+```bash
+python3 estacionamientoG.py /dev/video0
+```
+
+`estacionamientoG_cam_Data.py`: Se realiza la inferencia sobre un stream de una cámara USB, al igual que el envío de datos a una Raspberry Pi. Este se ejecuta con: 
+```bash
+python3 estacionamientoG_cam_Data.py /dev/video0
+```
+
+En caso de querer cambiar el dispositivo de control del semáforo, es necesario editar los códigos `estacionamientog_cam_Data.py` y `estacionamientog_Data.py`. En estos se debe cambiar:
+```bash
+broker_ip = "<IP>"
+topic = "<TOPIC>"
+client.connect(broker_ip, <PORT>)
 ```
