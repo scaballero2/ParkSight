@@ -264,7 +264,7 @@ def main(args):
 
     # ---------- [PGIE] ----------
 
-    pgie.set_property('config-file-path', "/opt/nvidia/deepstream/deepstream_python_apps/apps/estacionamientoG/config_infer_primary.txt")
+    pgie.set_property('config-file-path', "/opt/nvidia/deepstream/deepstream_python_apps/apps/ParkSight/config_infer_primary.txt")
     pgie_batch_size=pgie.get_property("batch-size")
     if(pgie_batch_size != number_sources):
         print("WARNING: Overriding infer-config batch-size",pgie_batch_size," with number of sources ", number_sources," \n")
@@ -292,7 +292,7 @@ def main(args):
 
     #---------- [nvds-analytics] ----------
 
-    nvdsanalytics.set_property("config-file", "/opt/nvidia/deepstream/deepstream_python_apps/apps/estacionamientoG/config_nvdsanalytics.txt")
+    nvdsanalytics.set_property("config-file", "/opt/nvidia/deepstream/deepstream_python_apps/apps/ParkSight/config_nvdsanalytics.txt")
 
     # --------------------- PLUGIN ADDITION AND LINKING --------------------
 
