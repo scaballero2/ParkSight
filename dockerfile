@@ -8,7 +8,13 @@ USER root
 WORKDIR /opt/nvidia/deepstream/deepstream-6.0/
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        python3-pip 
+        python3-pip \
+        python3-setuptools \
+        python3-wheel \
+        wget \
+        git \
+    && rm -rf /var/lib/apt/lists/*
+
 
 RUN wget https://github.com/NVIDIA-AI-IOT/deepstream_python_apps/releases/download/v1.1.1/pyds-1.1.1-py3-none-linux_aarch64.whl -P /tmp \
     && pip3 install /tmp/pyds-1.1.1-py3-none-linux_aarch64.whl \
