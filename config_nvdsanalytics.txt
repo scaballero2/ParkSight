@@ -10,8 +10,10 @@ display-obj-tag=1
 [line-crossing-stream-0]
 enable=1
 class-id=-1
-line-crossing-Exit=425;120;320;200;360;150;500;280
-line-crossing-Entry=400;260;480;170;370;140;520;240
+line-crossing-Exit=420;160;280;220;360;360;340;160
+line-crossing-Entry=280;320;400;260;320;160;340;360
+#line-crossing-Exit=425;120;320;200;360;150;500;280
+#line-crossing-Entry=400;260;480;170;370;140;520;240
 #line-crossing-Test=0;0;0;0;0;10;640;10
 #line-crossing-Test=0;0;0;0;630;0;630;480
 extended=0
