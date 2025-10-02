@@ -11,8 +11,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python3-pip \
         python3-setuptools \
         python3-wheel \
+        python3-dev \
         wget \
         git \
+        libgirepository1.0-dev \
+        libcairo2-dev \
+        pkg-config \
+        gir1.2-gtk-3.0 \
     && rm -rf /var/lib/apt/lists/*
 
 
