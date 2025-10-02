@@ -37,6 +37,7 @@ COPY trafficcamnet_pruned_onnx_v1.0.4/resnet18_trafficcamnet_pruned.onnx traffic
 COPY trafficcamnet_pruned_onnx_v1.0.4/labels.txt trafficcamnet_pruned_onnx_v1.0.4/
 COPY trafficcamnet_pruned_onnx_v1.0.4/nvinfer_config.txt trafficcamnet_pruned_onnx_v1.0.4/
 COPY trafficcamnet_pruned_onnx_v1.0.4/resnet18_trafficcamnet_pruned_int8.txt trafficcamnet_pruned_onnx_v1.0.4/
+COPY trafficcamnet_pruned_onnx_v1.0.4/resnet18_trafficcamnet_pruned_fp16.engine trafficcamnet_pruned_onnx_v1.0.4/
 
 WORKDIR /opt/nvidia/deepstream/deepstream-6.0/deepstream_python_apps/apps
 
