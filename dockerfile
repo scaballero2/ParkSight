@@ -46,4 +46,4 @@ RUN git clone https://github.com/scaballero2/ParkSight.git
 WORKDIR /opt/nvidia/deepstream/deepstream-6.0/deepstream_python_apps/apps/ParkSight
 
 
-CMD ["python3", "estacionamientoG_cam.py", "/dev/video0"]
+CMD ["python3", "estacionamientoG_cam_Data.py", "/dev/video0"]
