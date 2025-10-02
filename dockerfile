@@ -18,7 +18,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libcairo2-dev \
         pkg-config \
         gir1.2-gtk-3.0 \
-        librivermax1 \
     && rm -rf /var/lib/apt/lists/*
 
 
