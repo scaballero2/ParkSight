@@ -37,7 +37,7 @@ import pyds
 
 # Mqtt
 import paho.mqtt.client as mqtt
-broker_ip = "10.244.140.146"  # IP DE LA PI
+broker_ip = "10.244.134.153"  # IP DE LA PI
 topic = "deepstream/car_count"
 
 client = mqtt.Client()
@@ -46,6 +46,7 @@ try:
     client.connect(broker_ip, 1883)
     print("Conectado al broker MQTT")
     connected = True
+    client.loop_start()
 except Exception as e:
     print(f"Error al conectar al broker MQTT: {e}")
     connected = False
